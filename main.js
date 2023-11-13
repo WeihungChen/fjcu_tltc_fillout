@@ -10,14 +10,16 @@ async function Init()
         "method": "initform"
     };
     var result = await fetchPost(serverUrl + '/api', content, "application/json");
-    console.log(result);
-    const cityObj = document.getElementById('city');
-    for(var i=0; i<result[1].Cities.length; i++)
+    if(result[0] == 200)
     {
-        var opt = document.createElement('option');
-        opt.id = result[1].Cities[i].Name;
-        opt.innerHTML = result[1].Cities[i].Name;
-        cityObj.appendChild(opt);
+        const cityObj = document.getElementById('city');
+        for(var i=0; i<result[1].Cities.length; i++)
+        {
+            var opt = document.createElement('option');
+            opt.id = result[1].Cities[i].Name;
+            opt.innerHTML = result[1].Cities[i].Name;
+            cityObj.appendChild(opt);
+        }
     }
 }
 
