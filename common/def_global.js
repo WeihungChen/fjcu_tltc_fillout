@@ -1,4 +1,4 @@
-const serverUrl = 'https://fjcu-tltc.onrender.com';
+const serverUrl = 'https://render-trans-tel.onrender.com';
 
 export {
     serverUrl
