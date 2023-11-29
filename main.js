@@ -53,9 +53,6 @@ async function SubmitData()
     }
 
     var result = await fetchPost(serverUrl + '/api', content, "application/json");
-    console.log(result);
     if(result[0] == 200) // Submit successfully
         document.location.href="./done.html";
-    else
-        alert(result[2]);
 }
