@@ -3,7 +3,7 @@ import { serverUrl } from "./common/def_global.js";
 
 var Organizations = [];
 Init();
-document.getElementById('organization').addEventListener('keyup', SearchOrg);
+document.getElementById('organization').addEventListener('input', SearchOrg);
 document.getElementById('btn_submit').addEventListener('click', SubmitData);
 
 async function Init()
