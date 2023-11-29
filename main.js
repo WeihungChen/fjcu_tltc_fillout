@@ -3,7 +3,7 @@ import { serverUrl } from "./common/def_global.js";
 
 var Organizations = [];
 Init();
-document.getElementById('organization').addEventListener('change', OrgChanged);
+document.getElementById('organization').addEventListener('keyup', SearchOrg);
 document.getElementById('btn_submit').addEventListener('click', SubmitData);
 
 async function Init()
@@ -26,7 +26,7 @@ async function Init()
     }
 }
 
-function OrgChanged()
+function SearchOrg()
 {
     var org = this.value.toLowerCase();
     var autocompleteList = document.getElementById("autocomplete-list");
