@@ -1,7 +1,9 @@
 import { fetchPost } from "./common/web.js";
 import { serverUrl } from "./common/def_global.js";
 
+var Organizations = [];
 Init();
+document.getElementById('organization').addEventListener('change', OrgChanged);
 document.getElementById('btn_submit').addEventListener('click', SubmitData);
 
 async function Init()
@@ -12,6 +14,7 @@ async function Init()
     var result = await fetchPost(serverUrl + '/api', content, "application/json");
     if(result[0] == 200)
     {
+        Organizations = result[1].Organizations;
         const cityObj = document.getElementById('city');
         for(var i=0; i<result[1].Cities.length; i++)
         {
@@ -21,6 +24,28 @@ async function Init()
             cityObj.appendChild(opt);
         }
     }
+}
+
+function OrgChanged()
+{
+    var org = this.value.toLowerCase();
+    var autocompleteList = document.getElementById("autocomplete-list");
+    autocompleteList.innerHTML = "";
+    var filtered = Organizations.filter(function(organization) {
+        return organization.toLowerCase().indexOf(org) > -1;
+    });
+    filtered.forEach(function(organization) {
+        var orgDiv = document.createElement("div");
+        orgDiv.textContent = organization;
+        orgDiv.addEventListener('click', orgClicked);
+        autocompleteList.appendChild(orgDiv);
+    });
+}
+
+function orgClicked()
+{
+    document.getElementById('organization').value = this.innerHTML;
+    document.getElementById("autocomplete-list").innerHTML = '';
 }
 
 async function SubmitData()
