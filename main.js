@@ -31,6 +31,9 @@ function SearchOrg()
     var org = this.value.toLowerCase();
     var autocompleteList = document.getElementById("autocomplete-list");
     autocompleteList.innerHTML = "";
+    if(org == "")
+        return;
+
     var filtered = Organizations.filter(function(organization) {
         return organization.toLowerCase().indexOf(org) > -1;
     });
