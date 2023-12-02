@@ -74,6 +74,13 @@ async function SubmitData()
         alert('請填寫完整資料');
         return;
     }
+    var current = new Date();
+    current = current.getFullYear() - 2011;
+    if(content.data.Term > current)
+    {
+        alert('請確認所屬第幾屆，現有' + current + '屆');
+        return;
+    }
     if(content.data.Email.indexOf('@') == -1)
     {
         alert('請輸入完整Email');
