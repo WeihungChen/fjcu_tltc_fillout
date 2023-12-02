@@ -78,7 +78,7 @@ async function SubmitData()
     current = current.getFullYear() - 2011;
     if(content.data.Term > current)
     {
-        alert('請確認所屬第幾屆，現有' + current + '屆');
+        alert('請確認所屬第幾屆');
         return;
     }
     if(content.data.Email.indexOf('@') == -1)
